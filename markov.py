@@ -4,12 +4,12 @@
 import random
 
 
-def make_chains(corpus):
+def make_chains(input_text, corpus):
     """Takes an input text as a string and returns a dictionary of
     markov chains."""
      
 
-    f = open("sherlock.txt")
+    f = input_text
 
     words = []
     chain_dict = {}
@@ -34,7 +34,7 @@ def main():
 #    args = sys.argv
 
     # Change this to read input_text from a file
-    input_text = "A Scandal in Bohemia"
+    input_text = open("sherlock.txt")
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
