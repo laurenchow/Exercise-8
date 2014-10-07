@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #import sys
-
+import random
 
 
 def make_chains(corpus):
@@ -18,20 +18,17 @@ def make_chains(corpus):
         line = line.rstrip()
         words.extend(line.split())
 
-        #tuple(words[int(incrementor)], words[int(incrementor+1)])
-        #incrementor = incrementor + 1
-        print words
-
-    for each_number in range(len(words)-1):
-        #current_word=words[each_number]
+    for each_number in range(len(words)-2): #does this actually solve the range problem?
         chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2]]
-        print chain_dict
+        return chain_dict
 
-def make_text(chains):
+def make_text(chain_dict):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
-    pass
-    #return "Here's some random text."
+    
+    random_key=random.choice(chain_dict.keys())
+
+    print "Here's some random text %s and %s" % (random_key, chain_dict[random_key])
 
 def main():
 #    args = sys.argv
