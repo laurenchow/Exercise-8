@@ -9,18 +9,25 @@ def make_chains(corpus):
     markov chains."""
      
 
-    f = corpus
+    text = corpus.read() #this is functionally the same as the more complicated stuff below
+    words = text.split()
 
-    words = []
     chain_dict = {}
-
+    """
     for line in f:
         line = line.rstrip()
         words.extend(line.split())
+     """   
 
     for each_number in range(len(words)-2): #does this actually solve the range problem?
-        chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2]]
-        each_number = each_number + 1
+        if words[each_number] not in chain_dict.keys():
+            chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2]]
+            print "New word added!"
+        else:
+            words[each_number+2].append(words[each_number+2])
+            #chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2].append()]
+            print "This should be appending!"
+       #(add in things for when it exists)
 
     return chain_dict
 
@@ -29,21 +36,22 @@ def make_text(chain_dict):
     based off an original text."""
     
     random_key = random.choice(chain_dict.keys())
-   
-    print "Here's some random text: %s and %s" % (random_key, chain_dict[random_key])
-
+    
     return random_key
 
 def main():
 #    args = sys.argv
 
     # Change this to read input_text from a file
-    input_text = open("sherlock.txt")
+    input_text = open("sherlock_test.txt")
 
     chain_dict = make_chains(input_text)
-    random_text = make_text(chain_dict)
 
-    print random_text, chain_dict[random_text]
+
+    for i in range (1,100):
+        random_text = make_text(chain_dict)
+        print random_text, chain_dict[random_text] 
+
 
 if __name__ == "__main__":
     main()
