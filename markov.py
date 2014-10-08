@@ -20,12 +20,11 @@ def make_chains(corpus):
      """   
 
     for each_number in range(len(words)-2): #does this actually solve the range problem?
-        if words[each_number] not in chain_dict.keys():
+        if (words[each_number], words[each_number+1]) not in chain_dict.keys():
             chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2]]
             print "New word added!"
         else:
-            words[each_number+2].append(words[each_number+2])
-            #chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2].append()]
+            chain_dict[(words[each_number], words[each_number+1])].append(words[each_number+2])
             print "This should be appending!"
        #(add in things for when it exists)
 
@@ -43,7 +42,7 @@ def main():
 #    args = sys.argv
 
     # Change this to read input_text from a file
-    input_text = open("sherlock_test.txt")
+    input_text = open("sherlock.txt")
 
     chain_dict = make_chains(input_text)
 
