@@ -36,7 +36,6 @@ def make_text(chain_dict):
 # This selects the first random key to begin the chain.
     
     random_key = random.choice(chain_dict.keys())
-    print "Here's the original random key:"
     print random_key
 
 # This creates a random text list to append a random value from the original random key.
@@ -49,12 +48,17 @@ def make_text(chain_dict):
         next = random.choice(chain_dict[random_key]) 
         
         random_text_list.append(next)
-        print random_text_list
+        
 
         random_key = random_key[1:] + (next,)
-        print random_key
+        #print random_key
+    
+ #This is taking all the entries in random_text_list and adding them together as one string separated
+ #by a space each time.
+ 
+    print ' '.join(map(str, random_text_list)) 
 
-    return random_key
+    return random_text_list
 
 def main():
 
@@ -64,9 +68,8 @@ def main():
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
-    
-    print random_text, chain_dict[random_text] 
 
+    print random_text
 
 if __name__ == "__main__":
     main()
