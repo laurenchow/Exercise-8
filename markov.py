@@ -36,37 +36,33 @@ def make_text(chain_dict):
 # This selects the first random key to begin the chain.
     
     random_key = random.choice(chain_dict.keys())
-    print random_key
 
 # This creates a random text list to append a random value from the original random key.
 # The random key is then reassigned to a tuple containing the second key in the random keys tuple,
 # and adds the randomly generated value of the earlier random key tuple as the second tuple value. 
-# MAGIC
-    random_text_list = []
+# Convert tuples in random_key to strings, then added all strings together, then added to empty list
 
-    for i in chain_dict.iteritems():    
+    first_words = ' '.join(map(str,random_key)) 
+    random_text_list = [first_words]
+    
+    while random_key in chain_dict:    
         next = random.choice(chain_dict[random_key]) 
-        
         random_text_list.append(next)
+        random_key = (random_key[1],next)
         
-
-        random_key = random_key[1:] + (next,)
-        #print random_key
     
  #This is taking all the entries in random_text_list and adding them together as one string separated
- #by a space each time.
+ #by a space each time, then returning this list to the main function to print.
 
-    pretty_text_list = []
-    pretty_text_list.join(map(str, random_text_list)) 
-    print pretty_text_list
-    
-    return random_text_list
+    pretty_text = []
+    pretty_text = ' '.join(map(str, random_text_list)) 
+    return pretty_text
 
 def main():
 
 #    args = sys.argv
 
-    input_text = open("sherlock_test.txt")
+    input_text = open("sherlock.txt")
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
