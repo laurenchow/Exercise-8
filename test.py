@@ -1,6 +1,6 @@
 f = open("sherlock.txt")
 
-words= []
+words = []
 
 for line in f:
     line = line.rstrip()
