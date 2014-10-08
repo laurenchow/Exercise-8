@@ -54,10 +54,7 @@ def make_text(chain_dict):
         random_key = random_key[1:] + (next,)
         print random_key
 
-
-    
-    
-    #return random_key
+    return random_key
 
 def main():
 
@@ -66,9 +63,8 @@ def main():
     input_text = open("sherlock_test.txt")
 
     chain_dict = make_chains(input_text)
-
-
     random_text = make_text(chain_dict)
+    
     print random_text, chain_dict[random_text] 
 
 
