@@ -55,9 +55,11 @@ def make_text(chain_dict):
     
  #This is taking all the entries in random_text_list and adding them together as one string separated
  #by a space each time.
- 
-    print ' '.join(map(str, random_text_list)) 
 
+    pretty_text_list = []
+    pretty_text_list.join(map(str, random_text_list)) 
+    print pretty_text_list
+    
     return random_text_list
 
 def main():
