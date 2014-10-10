@@ -27,7 +27,8 @@ def make_chains(corpus):
             chain_dict[(words[each_number], words[each_number+1])] = [words[each_number+2]]
         else:
             chain_dict[(words[each_number], words[each_number+1])].append(words[each_number+2])
-       
+    
+    print "Here's our dictionary %r" % chain_dict    
     return chain_dict
 
 def make_text(chain_dict):
