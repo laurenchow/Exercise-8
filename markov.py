@@ -46,7 +46,8 @@ def make_text(chain_dict):
     first_words = ' '.join(map(str,random_key)) 
     random_text_list = [first_words]
     
-    while random_key in chain_dict:    
+    for i in range (1,100):
+    #while random_key in chain_dict:    
         next = random.choice(chain_dict[random_key]) 
         random_text_list.append(next)
         random_key = (random_key[1],next)
@@ -63,7 +64,7 @@ def main():
 
 #    args = sys.argv
 
-    input_text = open("ohgod.txt")
+    input_text = open("jaggedlittlephil.txt")
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
