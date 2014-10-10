@@ -46,19 +46,20 @@ def make_text(chain_dict):
     first_words = ' '.join(map(str,random_key)) 
     random_text_list = [first_words]
     
-    for i in range (1,100):
+    for i in range(1,100):
     #while random_key in chain_dict:    
         next = random.choice(chain_dict[random_key]) 
         random_text_list.append(next)
         random_key = (random_key[1],next)
+ 
+    pretty_text = []
+    pretty_text = ' '.join(map(str, random_text_list)) 
+    return pretty_text
         
     
  #This is taking all the entries in random_text_list and adding them together as one string separated
  #by a space each time, then returning this list to the main function to print.
 
-    pretty_text = []
-    pretty_text = ' '.join(map(str, random_text_list)) 
-    return pretty_text
 
 def main():
 
