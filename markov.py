@@ -2,8 +2,14 @@
 
 #import sys
 import random
-#import twitter
 
+
+import twitter
+
+#tapi = twitter.Api()
+
+
+#print tapi.VerifyCredentials()
 
 def make_chains(corpus):
     """Takes an input text as a string and returns a dictionary of
@@ -28,7 +34,6 @@ def make_chains(corpus):
         else:
             chain_dict[(words[each_number], words[each_number+1])].append(words[each_number+2])
     
-    print "Here's our dictionary %r" % chain_dict    
     return chain_dict
 
 def make_text(chain_dict):
@@ -70,13 +75,19 @@ def main():
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
-    #print len(random_text)
-    twitter_text = random_text[0:140]
+    twitter_text = random_text[0:130]
 
-    #print "This is the first 140 characters:"
-    print twitter_text    
-    #print len(twitter_text)
-    
+    last_space=twitter_text.rfind(' '[0:130])
+    #print "Here's your text %s" % twitter_text
+    #print "Here's where the last space is %r" % last_space
+    #print "This will be last letter of last full word %s" % twitter_text[last_space-1]
+
+    truncated_text = twitter_text[0:last_space]
+    print truncated_text
+ 
+    #status = tapi.PostUpdate(truncated_text + " #sussudio")
+    #print status.text     
+     
 
 if __name__ == "__main__":
     main()
