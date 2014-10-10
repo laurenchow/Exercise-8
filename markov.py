@@ -51,7 +51,7 @@ def make_text(chain_dict):
         next = random.choice(chain_dict[random_key]) 
         random_text_list.append(next)
         random_key = (random_key[1],next)
- 
+
     pretty_text = []
     pretty_text = ' '.join(map(str, random_text_list)) 
     return pretty_text
@@ -70,6 +70,7 @@ def main():
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
 
+    print type(random_text)
     print random_text
 
 if __name__ == "__main__":
