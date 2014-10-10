@@ -69,9 +69,13 @@ def main():
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
+    #print len(random_text)
+    twitter_text = random_text[0:140]
 
-    print type(random_text)
-    print random_text
+    #print "This is the first 140 characters:"
+    print twitter_text    
+    #print len(twitter_text)
+    
 
 if __name__ == "__main__":
     main()
