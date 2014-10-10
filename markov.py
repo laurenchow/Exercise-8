@@ -2,6 +2,7 @@
 
 #import sys
 import random
+#import twitter
 
 
 def make_chains(corpus):
@@ -62,7 +63,7 @@ def main():
 
 #    args = sys.argv
 
-    input_text = open("sherlock.txt")
+    input_text = open("ohgod.txt")
 
     chain_dict = make_chains(input_text)
     random_text = make_text(chain_dict)
