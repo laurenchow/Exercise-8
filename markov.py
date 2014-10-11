@@ -78,6 +78,8 @@ def main():
     twitter_text = random_text[0:130]
 
     last_space=twitter_text.rfind(' '[0:130])
+    first_upper=twitter_text.find('twitter_text.isupper'[0:130])
+    print first_upper
     #print "Here's your text %s" % twitter_text
     #print "Here's where the last space is %r" % last_space
     #print "This will be last letter of last full word %s" % twitter_text[last_space-1]
